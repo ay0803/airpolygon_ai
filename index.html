@@ -22,6 +22,14 @@
             letter-spacing: 0.05em;
         }
 
+        .galleries-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            max-width: 2500px;
+            margin: 0 auto;
+        }
+
         .gallery-container {
             display: flex;
             gap: 30px;
@@ -30,7 +38,6 @@
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
             max-width: 1200px;
-            margin: 0 auto;
         }
 
         .main-image {
@@ -74,24 +81,33 @@
     </style>
 </head>
 <body>
-    <h1>AirPolygon with generative AI model</h1>
-    <div class="gallery-container">
+    <h1 style="text-align: center">AirPolygon with generative AI model</h1>
+    <div class="gallery-container" style="margin: 0 auto">
         <div class="main-image-container">
-            <img src="image1.png" alt="メイン画像" class="main-image" id="mainImage">
+            <img src="heart_waku.jpg" alt="メイン画像" class="main-image" id="mainImageLeft">
         </div>
         <div class="thumbnails">
-            <img src="image1.png" alt="サムネイル1" class="thumbnail active" onclick="changeImage('image1.png', this)">
-            <img src="image2.png" alt="サムネイル2" class="thumbnail" onclick="changeImage('image2.png', this)">
-            <img src="image3.png" alt="サムネイル3" class="thumbnail" onclick="changeImage('image3.png', this)">
-            <img src="image4.png" alt="サムネイル4" class="thumbnail" onclick="changeImage('image4.png', this)">
+            <img src="heart_sample.jpg" alt="サムネイル1" class="thumbnail active" onclick="changeImage(this.src, this, 'Left')">
+            <img src="heart1.jpg" alt="サムネイル2" class="thumbnail" onclick="changeImage(this.src, this, 'Left')">
+            <img src="heart_sample2.jpg" alt="サムネイル3" class="thumbnail" onclick="changeImage(this.src, this, 'Left')">
+            <img src="heart_sample3.jpg" alt="サムネイル4" class="thumbnail" onclick="changeImage(this.src, this, 'Left')">
+        </div>
+        <div class="thumbnails" style="align-items: flex-end; margin-left: auto;">
+            <img src="cube_sample.jpg" alt="サムネイル1" class="thumbnail active" onclick="changeImage(this.src, this, 'Right')">
+            <img src="cube1.jpg" alt="サムネイル2" class="thumbnail" onclick="changeImage(this.src, this, 'Right')">
+            <img src="cube_sample2.jpg" alt="サムネイル3" class="thumbnail" onclick="changeImage(this.src, this, 'Right')">
+            <img src="cube_sample3.jpg" alt="サムネイル4" class="thumbnail" onclick="changeImage(this.src, this, 'Right')">
+        </div>
+        <div class="main-image-container">
+            <img src="cube_waku.jpg" alt="メイン画像" class="main-image" id="mainImageRight">
         </div>
     </div>
 
     <script>
-        function changeImage(src, element) {
-            document.getElementById('mainImage').src = src;
+        function changeImage(src, element, side) {
+            document.getElementById('mainImage' + side).src = src;
             // アクティブなサムネイルのスタイルを更新
-            document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
+            element.closest('.gallery-container').querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
             element.classList.add('active');
         }
     </script>
